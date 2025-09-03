@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Image Page</title>
+  <style 
+    /* General styling */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  text-align: center;
+}
+
+header {
+  background: #333;
+  color: white;
+  padding: 20px 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+/* Gallery styling */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Footer styling */
+footer {
+  background: #333;
+  color: white;
+  padding: 10px 0;
+  margin-top: 20px;
+}
+</style> 
+</head>
+<body>
+  <header>
+    <h1>My Image Gallery</h1>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <img src="finelined 9_12_2024.jpg">
+      <img src="13_09_2023.png">
+      <img src="https://via.placeholder.com/400x250" alt="Image 3">
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 My Gallery</p>
+  </footer>
+</body>
+</html>
 
