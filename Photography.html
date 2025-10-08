@@ -7,81 +7,95 @@
 
   <style>
     /* Reset & basics */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #111;
-  color: #eee;
-  text-align: center;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #eee;
+      text-align: center;
+    }
 
-header {
-  background: #000;
-  padding: 40px 20px;
-}
+    header {
+      background: #000;
+      padding: 40px 20px;
+    }
 
-header h1 {
-  margin: 0;
-  font-size: 2.5rem;
-  color: #ffce00;
-}
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #ffce00;
+    }
 
-header p {
-  margin-top: 10px;
-  font-size: 1.2rem;
-  color: #ccc;
-}
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #ccc;
+    }
 
-/* Gallery styling */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 30px;
-}
+    /* Gallery styling */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Always 3 per row */
+      gap: 20px;
+      padding: 30px;
+      justify-items: center;
+    }
 
-.gallery img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+    .gallery img {
+      width: 100%;
+      max-width: 350px; /* Optional: keeps images from stretching too wide */
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-.gallery img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
-}
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+    }
 
-/* Footer styling */
-footer {
-  background: #000;
-  color: #aaa;
-  padding: 15px 0;
-  margin-top: 20px;
-}
+    /* Footer styling */
+    footer {
+      background: #000;
+      color: #aaa;
+      padding: 15px 0;
+      margin-top: 20px;
+    }
 
-    </style>
+    /* Make it responsive for smaller screens */
+    @media (max-width: 800px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
 </head>
 <body>
   <header>
     <h1>Photography</h1>
-    <p></p>
+    <p>Explore my collection of moments</p>
   </header>
 
   <main>
     <section class="gallery">
-        <img src="Photo_1.jpg" alt="Landscape Photography">
-        <img src="Photo_2.jpg" alt="Portrait Photography">
-        <img src="Photo_3.jpg" alt="Urban Photography">
-        <img src="Photo_4.jpg" alt="Landscape Photography">
-        <img src="Photo_5.jpg" alt="Portrait Photography">
-        <img src="Photo_6.jpg" alt="Urban Photography">
-        <img src="Photo_7.jpg" alt="Landscape Photography">
-        <img src="Photo_8.jpg" alt="Portrait Photography">
-        <img src="Photo_9.jpg" alt="Urban Photography">
-        <img src="Photo_10.jpg" alt="Landscape Photography">
-      </a>
+      <img src="Photo_1.jpg" alt="Urban Photography">
+      <img src="Photo_2.jpg" alt="Urban Photography">
+      <img src="Photo_3.jpg" alt="Urban Photography">
+      <img src="Photo_4.jpg" alt="Urban Photography">
+      <img src="Photo_5.jpg" alt="Urban Photography">
+      <img src="Photo_6.jpg" alt="Urban Photography">
+      <img src="Photo_7.jpg" alt="Urban Photography">
+      <img src="Photo_8.jpg" alt="Urban Photography">
+      <img src="Photo_9.jpg" alt="Urban Photography">
+      <img src="Photo_10.jpg" alt="Urban Photography">
     </section>
   </main>
 
