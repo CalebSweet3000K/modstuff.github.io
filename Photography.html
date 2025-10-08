@@ -43,9 +43,10 @@
 
     .gallery img {
       width: 100%;
-      max-width: 350px; /* Optional: keeps images from stretching too wide */
+      max-width: 350px;
       height: auto;
       border-radius: 12px;
+      cursor: pointer;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
       transition: transform 0.3s, box-shadow 0.3s;
     }
@@ -55,7 +56,31 @@
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
     }
 
-    /* Footer styling */
+    /* Fullscreen overlay */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.8);
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
     footer {
       background: #000;
       color: #aaa;
@@ -63,7 +88,7 @@
       margin-top: 20px;
     }
 
-    /* Make it responsive for smaller screens */
+    /* Responsive */
     @media (max-width: 800px) {
       .gallery {
         grid-template-columns: repeat(2, 1fr);
@@ -75,7 +100,6 @@
         grid-template-columns: 1fr;
       }
     }
-
   </style>
 </head>
 <body>
@@ -99,9 +123,37 @@
     </section>
   </main>
 
+  <!-- Lightbox element -->
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="Expanded view">
+  </div>
+
   <footer>
     <p>© 2025 SnazzyKazzy</p>
   </footer>
+
+  <script>
+    // JavaScript for fullscreen effect
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+      });
+    });
+
+    // Close lightbox on click or Escape key
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        lightbox.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
-
