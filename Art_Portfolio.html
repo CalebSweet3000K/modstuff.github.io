@@ -1,74 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Art Portfolio</title>
+
   <style>
-    /* General styling */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  color: #333;
-  text-align: center;
-}
+    /* Reset & basics */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #eee;
+      text-align: center;
+    }
 
-header {
-  background: #333;
-  color: white;
-  padding: 20px 0;
-}
+    header {
+      background: #000;
+      padding: 40px 20px;
+    }
 
-h1 {
-  margin: 0;
-}
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #ffce00;
+    }
 
-/* Gallery styling */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #ccc;
+    }
 
-.gallery img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s;
-}
+    /* Gallery styling */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Always 3 per row */
+      gap: 20px;
+      padding: 30px;
+      justify-items: center;
+    }
 
-.gallery img:hover {
-  transform: scale(1.05);
-}
+    .gallery img {
+      width: 100%;
+      max-width: 350px;
+      height: auto;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-/* Footer styling */
-footer {
-  background: #333;
-  color: white;
-  padding: 10px 0;
-  margin-top: 20px;
-}
-</style> 
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Fullscreen overlay */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.8);
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    footer {
+      background: #000;
+      color: #aaa;
+      padding: 15px 0;
+      margin-top: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Image Gallery</h1>
+    <h1>Art Portfoilio</h1>
+    <p>My collection of drawn works.</p>
   </header>
 
   <main>
     <section class="gallery">
-      <img src="finelined 9_12_2024.jpg">
-      <img src="13_09_2023.png">
-      <img src="20240127_014945.jpg">
+      <img src="20240303_154939.jpg" alt="Urban Photography">
+      <img src="13_09_2023.png" alt="Urban Photography">
+      <img src="20240127_014945.jpg" alt="Urban Photography">
     </section>
   </main>
 
+  <!-- Lightbox element -->
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="Expanded view">
+  </div>
+
   <footer>
-    <p>© 2025 Gallery</p>
+    <p>© 2025 SnazzyKazzy</p>
   </footer>
+
+  <script>
+    // JavaScript for fullscreen effect
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+      });
+    });
+
+    // Close lightbox on click or Escape key
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        lightbox.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
-
